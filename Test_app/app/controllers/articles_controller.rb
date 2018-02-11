@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was successfully created"
       # Redireciona a pagina atual
       # para a pagina 'article/show'
+      # TEM UM POSSIVEL ERRO AQUI
       redirect_to article_path(@article)
     else
       # Renderiza a pagina new novamente

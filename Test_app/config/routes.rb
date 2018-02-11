@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # get 'ROUTE', to: 'CONTROLLER'#'ACTION'
   root'pages#home' # root 'CONTROLLER'#'ACTION' -> vai define a página principal
   get 'about', to: 'pages#about'
+  
+  resource :articles
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

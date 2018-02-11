@@ -1,0 +1,24 @@
+<h1>
+   Create an article
+</h1>
+
+
+<% # @article foi inicializado no articles_controller new %>
+<% # form_for e' uma funcao do rails que facilita a criacao %>
+<% # de GUI para entradas do usua'rio %>
+<%= form_for @article do |variable_name| %>
+  <p>
+    <%= variable_name.label :title %> <br/>
+    <%= variable_name.text_field :title %>
+  </p>
+  
+  <p>
+    <%= variable_name.label :description %> <br/>
+    <%= variable_name.text_area :description %>
+  </p>
+
+  <p>
+    <%= variable_name.submit %>
+  </p>
+
+<%end%>

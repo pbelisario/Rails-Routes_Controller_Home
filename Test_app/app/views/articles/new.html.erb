@@ -2,6 +2,18 @@
    Create an article
 </h1>
 
+<% # Tratando caso exista um erro %>
+<% if @article.errors.any? %>
+<h2>
+  The following errors prevented the article from getting created
+</h2>
+  <ul>
+    <% # Mostra cada mensagem de erro %>
+    <% @article.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <% # @article foi inicializado no articles_controller new %>
 <% # form_for e' uma funcao do rails que facilita a criacao %>
@@ -21,4 +33,4 @@
     <%= variable_name.submit %>
   </p>
 
-<%end%>
+<% end %>

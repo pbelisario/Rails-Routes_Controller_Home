@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-  
-  def new
+  def new 
     @article = Article.new
   end
   
@@ -9,12 +8,26 @@ class ArticlesController < ApplicationController
     # render plain: params[:article].inspect
     
     # Cria uma variacel que recebera os parametros
-    @article = Article.new (article_params)
-    # A salva no BD
-    @article.save
-    # Redireciona a pagina atual
-    # para a pagina 'articles/show'
-    redirect_to articles_show()
+    @article = Article.new(article_params)
+    
+    # Testa se e' salvavel no BD
+    if @article.save
+      # Cria PopUp
+      # Para permitir que ela apareca tem que colocar um
+      # codigo em views/layouts application.html.erb
+      flash[:notice] = "Article was successfully created"
+      # Redireciona a pagina atual
+      # para a pagina 'article/show'
+      redirect_to article_path(@article)
+    else
+      # Renderiza a pagina new novamente
+      render 'new'
+    end
+  end
+  
+  def show
+    # Mostrara' o Article correspondente ao id que estara' na pagina
+    @article = Article.find(params[:id])
   end
   
   private
@@ -23,9 +36,8 @@ class ArticlesController < ApplicationController
       # O unico parametro aceito e' o :article,
       # e dele somente as variaveis aceitas
       # sao :title, e :description
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title,:description)
     end
-  
   
   
 end

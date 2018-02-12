@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
   
+  # Maneira interessante de chamar o mesmo metodo em varias
+  # funcoes para evitar repeticao, ressalva-se que esse
+  # metodo e' chamado quando a funcao que o utiliza, e' ativada
+  before_action :set_article, only: [:update, :show, :destroy]
+  
   def index
     # Salva em @articles todos os article presentes
     @articles = Article.all
@@ -39,7 +44,7 @@ class ArticlesController < ApplicationController
   
   def update
     
-    @article = Article.find(params[:id])
+
     
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated"
@@ -53,12 +58,11 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    # Mostrara' o Article correspondente ao id que estara' na pagina
-    @article = Article.find(params[:id])
+
   end
   
   def destroy
-    @article = Article.find(params[:id])
+
     # O Comando .destroy, tira tambem do BD
     @article.destroy
     
@@ -67,6 +71,11 @@ class ArticlesController < ApplicationController
   end
   
   private
+    def set_article
+      @article = Article.find(params[:id])
+    end
+  
+  
     def article_params
       # Auto explicativo
       # O unico parametro aceito e' o :article,

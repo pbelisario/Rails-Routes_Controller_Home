@@ -57,6 +57,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   
+  def destroy
+    @article = Article.find(params[:id])
+    # O Comando .destroy, tira tambem do BD
+    @article.destroy
+    
+    flash[:notice] = "Article Successfully Deleted"
+    redirect_to articles_path
+  end
+  
   private
     def article_params
       # Auto explicativo

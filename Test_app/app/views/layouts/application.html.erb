@@ -7,14 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% # Codigo para permitir o uso de flash como PopUp %>
-  <% flash.each do |name, msg| %>
-  <ul>
-    <li><%= msg %></li>
-  </ul> 
-  <% end %>
-
-<%= yield %>
+  <% # Aqui teve que se colocar o diretorio, pq estavam buscando pelo arquivo %>
+  <% # No diretorio padrao 'TestApp' %>
+  <%= render 'layouts/messages' %>
+  <%= yield %>
 
 </body>
 </html>

@@ -1,4 +1,10 @@
 class ArticlesController < ApplicationController
+  
+  def index
+    # Salva em @articles todos os article presentes
+    @articles = Article.all
+  end
+  
   def new 
     @article = Article.new
   end

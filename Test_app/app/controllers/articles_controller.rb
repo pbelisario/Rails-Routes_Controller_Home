@@ -3,6 +3,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
   
+  def edit
+    # Mostrara' o Article correspondente ao id que estara' na pagina
+    @article = Article.find(params[:id])
+  end
+  
   def create
     # Renderiza o que a variavel :articles recebeu
     # render plain: params[:article].inspect
@@ -19,11 +24,26 @@ class ArticlesController < ApplicationController
       # Redireciona a pagina atual
       # para a pagina 'article/show'
       # TEM UM POSSIVEL ERRO AQUI
-      redirect_to article_path(@article)
+      redirect_to(article_path(@article))
     else
       # Renderiza a pagina new novamente
       render 'new'
     end
+  end
+  
+  def update
+    
+    @article = Article.find(params[:id])
+    
+    if @article.update(article_params)
+      flash[:notice] = "Article was successfully updated"
+      # A Funcao Redirect_to possui um bug de seguranca
+      # Por isso essa linha abaixo nao funciona corretamente
+      redirect_to (article_path(@article))
+    else
+      render 'edit'
+    end
+    
   end
   
   def show
@@ -37,7 +57,7 @@ class ArticlesController < ApplicationController
       # O unico parametro aceito e' o :article,
       # e dele somente as variaveis aceitas
       # sao :title, e :description
-      params.require(:article).permit(:title,:description)
+      params.require(:article).permit(:title, :description)
     end
   
   

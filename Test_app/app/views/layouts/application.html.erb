@@ -7,10 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
   <% # Aqui teve que se colocar o diretorio, pq estavam buscando pelo arquivo %>
-  <% # No diretorio padrao 'TestApp' %>
+  <% # no diretorio padrao 'TestApp' %>
+  <%= render 'layouts/navigation' %>
   <%= render 'layouts/messages' %>
-  <%= yield %>
+  <!-- Esse container e' para adiconar espacos nas laterais da tela -->
+  <div class= "container">
+    <%= yield %>  
+  </div>
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>

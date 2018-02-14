@@ -1,2 +1,75 @@
+$navbar-default-bg: black;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+// Todas as alteracoes de estilo,
+// ficam nesse arquivo.
+// Para alterar uma classe:
+// '.''NomeDaClasse
+// Para alterar um ID:
+// '#' NomeDoID
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #fff; // Branco
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+// Alteracao implementada para todo o jumbotron
+.jumbotron {
+  background-image: asset-url('download.png');
+}
+
+// Alteracao implementada para somente o h1 que
+// usa jumbotron
+.jumbotron h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.btn-xlarge {
+  font-size: 1.7em;
+  background-color: black;
+}
+
+.footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+.footer a:hover {
+  color: #222;
+}
+
+.footer small {
+  float: left;
+}
+
+.footer ul {
+  float: right;
+  list-style: none;
+}
+
+.footer ul li {
+  float: left;
+  margin-left: 15px;
+}

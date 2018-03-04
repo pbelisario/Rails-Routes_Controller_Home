@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
       # Cria PopUp
       # Para permitir que ela apareca tem que colocar um
       # codigo em views/layouts application.html.erb
-      flash[:notice] = "Article was successfully created"
+      flash[:success] = "Article was successfully created"
       # Redireciona a pagina atual
       # para a pagina 'article/show'
       # TEM UM POSSIVEL ERRO AQUI
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
 
     
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated"
+      flash[:success] = "Article was successfully updated"
       # A Funcao Redirect_to possui um bug de seguranca
       # Por isso essa linha abaixo nao funciona corretamente
       redirect_to (article_path(@article))
@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
     # O Comando .destroy, tira tambem do BD
     @article.destroy
     
-    flash[:notice] = "Article Successfully Deleted"
+    flash[:danger] = "Article Successfully Deleted"
     redirect_to articles_path
   end
   

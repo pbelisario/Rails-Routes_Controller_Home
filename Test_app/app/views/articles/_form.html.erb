@@ -1,18 +1,7 @@
 <% # Arquivo criado para retirar as redundancias do codigo HTML %>
 <% # Presentes nos arquivos edit e new %>
 
-<% # Tratando caso exista um erro %>
-<% if @article.errors.any? %>
-<h2>
-  The following errors prevented the article from getting created
-</h2>
-  <ul>
-    <% # Mostra cada mensagem de erro %>
-    <% @article.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
 
 <div class = 'row'>
   <div class = 'col-xs-12'>

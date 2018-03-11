@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
     
     # Cria uma variacel que recebera os parametros
     @article = Article.new(article_params)
+    @article.user = User.first # para evitar bug nesse inicio
     
     # Testa se e' salvavel no BD
     if @article.save
